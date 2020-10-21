@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script src="https://kit.fontawesome.com/acb80b97ac.js" crossorigin="anonymous"></script>
+<script>
+/*const options = {weekday:"long",month:"short",day:"numeric"};
+d = new Date();
+console.log(d);
+
+document.getElementById('date').innerHTML= d.toLocaleDateString("en",options);*/
+  $(function(){
+      $("ul").on("click", "li", function(){
+      $(this).wrap("<strike>");
+      });
+  });
+
+  $(function(){
+      $('#button1').click(function(){
+        //console.log("working");
+              var newTask = $('#ListItem').val();
+              //console.log(newTask);
+              if(newTask!== ''){
+                $('#taskList').append('<li class="list-item">'+ newTask +'<i class="fas fa-trash"></i></li>');
+                $('#ListItem').val('');
+              }else{
+                alert("Empty Task");
+              }
+      });
+  });
+  $(function(){
+  $("ul").on("click", "i", function(event){
+      $(this).parent().fadeOut(300, function(){
+      $(this).remove();
+      });
+      event.stopPropagation();
+    });
+});
+</script>
+
+<style>
+  h2{
+    color:red;
+  }
+  body{
+    background-color:#ff0066;
+  }
+  .container{
+      padding:20px;
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 40px;
+      background: white;
+      border-radius: 5px;
+    }
+    p{
+        font-size:18px;
+        font-family: "Lucida Console", Courier, monospace;
+      }
+      i{
+        padding-left: 15px;
+      }
+
+  .form1 {
+      display: inline-block;
+    }
+
+  input{
+      padding: 4px 15px 4px 5px;
+    }
+    .input , .custom{
+      display:flex;
+    }
+  #button1{
+        display: inline-block;
+        background-color:#3333cc;
+        color:#ffffff;
+        border-radius: 5px;
+        text-align:center;
+        margin-top:2px;
+        padding: 5px 15px;
+      }
+
+  #button1:hover{
+      cursor: pointer;
+      opacity:0.8;
+    }
+
+  </style>
+</head>
+  <body>
+    <div class="container">
+    <!--  <div id="date"></div> -->
+        <h2>
+             To-Do List
+        </h2>
+        <div class="form1">
+            <p>Enter a new task:</p>
+            <input class="input" type="text" id="ListItem" name="ListItem"/>
+            <input type="button" class="custom" id="button1"value="Add Item"/>
+        </div>
+        <ul class="task-group" id="taskList">
+            <li class="list-item">complete 3 Practicals<i class="fas fa-trash"></i></li>
+        </ul>
+        </div>
+  </body>
+</html>
